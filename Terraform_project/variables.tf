@@ -44,6 +44,13 @@ variable "private_subnet2" {
   default     = "10.0.4.0/24"
 }
 
+#aws instance_count
+variable "ec2_instance_ami" {
+  description = "ec2 instance ami id"
+  type        = string
+  default     = "ami-0d9858aa3c6322f73"
+}
+
 #Database variables
 variable "db_username" {
   description = "Database admin username"
@@ -55,12 +62,6 @@ variable "db_password" {
   description = "Database admin password"
   type        = string
   sensitive   = true
-}
-
-variable "instance_count" {
-  description = "Number of instances to provision."
-  type        = number
-  default     = 2
 }
 
 
