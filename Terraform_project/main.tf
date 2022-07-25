@@ -70,6 +70,24 @@ resource "aws_subnet" "private_subnet2" {
   availability_zone = "us-west-1b"
 }
 
+#Create EC2 instance in publice subnet1
+resource "aws_instance" "EC2-1" {
+  ami                         = var.ec2_instance_ami
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public_subnet1.id
+  associate_public_ip_address = true
+  count                       = 1
+}
+
+#Create EC2 instance in publice subnet2
+resource "aws_instance" "EC2_2" {
+  ami                         = var.ec2_instance_ami
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public_subnet2.id
+  associate_public_ip_address = true
+  count                       = 1
+}
+
 #Create RDS instance
 resource "aws_db_instance" "default" {
   allocated_storage    = 10
